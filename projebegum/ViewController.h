@@ -10,6 +10,13 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)kaydet:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *isim;
+@property (weak, nonatomic) IBOutlet UITextField *soyad;
+@property (weak, nonatomic) IBOutlet UITextField *email;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
+
 

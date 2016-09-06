@@ -7,12 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "ListTableViewViewController.h"
+#import "UserModel.h"
 
 @interface ViewController ()
 
+
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    NSMutableArray * mutableArray;
+}
+@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,5 +29,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)kaydet:(id)sender {
+    mutableArray = [[NSMutableArray alloc] init];
+    UserModel *userModel = [[UserModel alloc] init];
+    
+    userModel.isim = self.isim.text;
+    userModel.soyIsim = self.soyad.text;
+    userModel.eMail = self.email.text;
+    
+    [mutableArray addObject:userModel];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ikinciScreenId"]) {
+        ListTableViewViewController *destViewController = segue.destinationViewController;
+        destViewController.array = mutableArray;        
+    }
+}
+
+
+
 
 @end
